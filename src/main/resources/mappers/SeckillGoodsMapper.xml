@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.necpu.mapper.SeckillGoodsMapper">
+    <select id="getSecGoodsById" resultType="com.necpu.model.SeckillGoods">
+        select id,goods_id,seckill_price,stock_cnt,start_time,end_time
+        from seckill_goods
+        where goods_id = #{goodsId}
+    </select>
+</mapper>
