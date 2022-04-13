@@ -3,6 +3,7 @@ package com.necpu.util;
 import io.netty.util.Timeout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
@@ -34,5 +35,17 @@ public class RedisUtil {
             return false;
         }
         return true;
+    }
+
+    public void decr(String key){
+        redisTemplate.opsForValue().decrement(key);
+    }
+
+    public Object execute(SessionCallback sessionCallback){
+        return redisTemplate.execute(sessionCallback);
+    }
+
+    public boolean hasKey(String key){
+        return redisTemplate.hasKey(key);
     }
 }
