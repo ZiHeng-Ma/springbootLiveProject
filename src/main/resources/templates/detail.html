@@ -34,6 +34,12 @@
                 <span th:if="${status eq 1}">秒杀进行中</span>
                 <span th:if="${status eq 2}">秒杀已结束</span>
             </td>
+            <td>
+                <from id="seckillForm" method="post" action="/toSeckill">
+                    <input type="hidden" name="goodsId" th:value="${detail.goodsId}">
+                    <button type="submit" id="buyButton">抢购</button>
+                </from>
+            </td>
         </tr>
         <tr>
             <td>商品原价</td>

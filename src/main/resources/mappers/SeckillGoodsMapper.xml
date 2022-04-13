@@ -8,4 +8,9 @@
         from seckill_goods
         where goods_id = #{goodsId}
     </select>
+    
+    <update id="reduceStockCnt">
+        update seckill_goods set stock_cnt=#{stock_cnt}
+        where goods_id=#{goods_id}
+    </update>
 </mapper>

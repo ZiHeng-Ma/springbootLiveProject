@@ -10,4 +10,6 @@ import java.util.List;
 public interface SeckillGoodsMapper {
 
     SeckillGoods getSecGoodsById(String goodsId);
+
+    void reduceStockCnt(SeckillGoods seckillGoods);
 }

@@ -22,7 +22,7 @@ public class GoodsServiceImpl implements GoodsService {
     private SeckillGoodsMapper seckillGoodsMapper;
 
     @Override
-    public List<GoodsVo> getGoods() {
+    public List<GoodsVo> getSeckillGoods() {
 
         List<GoodsVo> result = new ArrayList<>();
 
@@ -44,6 +44,13 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public void reduceStockCnt(String goodsId) {
+        SeckillGoods seckillGoods = seckillGoodsMapper.getSecGoodsById(goodsId);
+        seckillGoods.setStock_cnt(seckillGoods.getStock_cnt() - 1);
+        seckillGoodsMapper.reduceStockCnt(seckillGoods);
+    }
+
+    @Override
     public GoodDetailVo getGoodsDetail(String goodsId) {
         Goods goods = mapper.getGoodsById(goodsId);
         SeckillGoods seckillGoods = seckillGoodsMapper.getSecGoodsById(goodsId);
@@ -57,5 +64,10 @@ public class GoodsServiceImpl implements GoodsService {
         vo.setEntTime(seckillGoods.getEnd_time());
 
         return vo;
+    }
+
+    @Override
+    public List<Goods> getGoods() {
+        return null;
     }
 }

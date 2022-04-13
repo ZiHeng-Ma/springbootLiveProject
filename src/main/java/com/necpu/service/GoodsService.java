@@ -8,7 +8,11 @@ import java.util.List;
 
 public interface GoodsService {
 
-    List<GoodsVo> getGoods();
+    List<GoodsVo> getSeckillGoods();
 
     GoodDetailVo getGoodsDetail(String goodsId);
+
+    List<Goods> getGoods();
+
+    void reduceStockCnt(String goodsId);
 }
